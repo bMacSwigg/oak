@@ -1,4 +1,7 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `rust/oak/src/grpc/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../oak/index.html'><div class='logo-container'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `rust/oak/src/grpc/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+<link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png">
+<link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../oak/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
+                <a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -362,6 +365,49 @@
 <span id="362">362</span>
 <span id="363">363</span>
 <span id="364">364</span>
+<span id="365">365</span>
+<span id="366">366</span>
+<span id="367">367</span>
+<span id="368">368</span>
+<span id="369">369</span>
+<span id="370">370</span>
+<span id="371">371</span>
+<span id="372">372</span>
+<span id="373">373</span>
+<span id="374">374</span>
+<span id="375">375</span>
+<span id="376">376</span>
+<span id="377">377</span>
+<span id="378">378</span>
+<span id="379">379</span>
+<span id="380">380</span>
+<span id="381">381</span>
+<span id="382">382</span>
+<span id="383">383</span>
+<span id="384">384</span>
+<span id="385">385</span>
+<span id="386">386</span>
+<span id="387">387</span>
+<span id="388">388</span>
+<span id="389">389</span>
+<span id="390">390</span>
+<span id="391">391</span>
+<span id="392">392</span>
+<span id="393">393</span>
+<span id="394">394</span>
+<span id="395">395</span>
+<span id="396">396</span>
+<span id="397">397</span>
+<span id="398">398</span>
+<span id="399">399</span>
+<span id="400">400</span>
+<span id="401">401</span>
+<span id="402">402</span>
+<span id="403">403</span>
+<span id="404">404</span>
+<span id="405">405</span>
+<span id="406">406</span>
+<span id="407">407</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">//</span>
 <span class="comment">// Copyright 2018 The Project Oak Authors</span>
@@ -386,6 +432,7 @@
     <span class="ident">OakError</span>, <span class="ident">OakStatus</span>,
 };
 <span class="kw">use</span> <span class="ident">log</span>::{<span class="ident">error</span>, <span class="ident">warn</span>};
+<span class="kw">use</span> <span class="ident">oak_abi</span>::<span class="ident">label</span>::<span class="ident">Label</span>;
 <span class="kw">use</span> <span class="ident">oak_services</span>::<span class="ident">proto</span>::<span class="ident">google</span>::<span class="ident">rpc</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">oak_services</span>::<span class="ident">proto</span>::{
     <span class="ident">google</span>::<span class="ident">rpc</span>::<span class="kw-2">*</span>,
@@ -454,7 +501,8 @@
                 <span class="ident">WriteMode</span>::<span class="ident">Close</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
             },
         };
-        <span class="self">self</span>.<span class="ident">sender</span>.<span class="ident">send</span>(<span class="kw-2">&amp;</span><span class="ident">grpc_rsp</span>)<span class="question-mark">?</span>;
+        <span class="comment">// TODO(#1739): Do not automatically use privilege.</span>
+        <span class="self">self</span>.<span class="ident">sender</span>.<span class="ident">send_with_downgrade</span>(<span class="kw-2">&amp;</span><span class="ident">grpc_rsp</span>)<span class="question-mark">?</span>;
         <span class="kw">if</span> <span class="ident">mode</span> <span class="op">=</span><span class="op">=</span> <span class="ident">WriteMode</span>::<span class="ident">Close</span> {
             <span class="self">self</span>.<span class="ident">sender</span>.<span class="ident">close</span>()<span class="question-mark">?</span>;
         }
@@ -472,7 +520,8 @@
                 <span class="ident">WriteMode</span>::<span class="ident">Close</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
             },
         };
-        <span class="self">self</span>.<span class="ident">sender</span>.<span class="ident">send</span>(<span class="kw-2">&amp;</span><span class="ident">grpc_rsp</span>)<span class="question-mark">?</span>;
+        <span class="comment">// TODO(#1739): Do not automatically use privilege.</span>
+        <span class="self">self</span>.<span class="ident">sender</span>.<span class="ident">send_with_downgrade</span>(<span class="kw-2">&amp;</span><span class="ident">grpc_rsp</span>)<span class="question-mark">?</span>;
         <span class="kw">if</span> <span class="ident">mode</span> <span class="op">=</span><span class="op">=</span> <span class="ident">WriteMode</span>::<span class="ident">Close</span> {
             <span class="self">self</span>.<span class="ident">sender</span>.<span class="ident">close</span>()<span class="question-mark">?</span>;
         }
@@ -488,7 +537,8 @@
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">status</span>) <span class="op">=</span> <span class="ident">result</span> {
             <span class="ident">grpc_rsp</span>.<span class="ident">status</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">status</span>);
         }
-        <span class="self">self</span>.<span class="ident">sender</span>.<span class="ident">send</span>(<span class="kw-2">&amp;</span><span class="ident">grpc_rsp</span>)<span class="question-mark">?</span>;
+        <span class="comment">// TODO(#1739): Do not automatically use privilege.</span>
+        <span class="self">self</span>.<span class="ident">sender</span>.<span class="ident">send_with_downgrade</span>(<span class="kw-2">&amp;</span><span class="ident">grpc_rsp</span>)<span class="question-mark">?</span>;
         <span class="self">self</span>.<span class="ident">sender</span>.<span class="ident">close</span>()<span class="question-mark">?</span>;
         <span class="prelude-val">Ok</span>(())
     }
@@ -512,7 +562,8 @@
     <span class="kw">fn</span> <span class="ident">invoke</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">method</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">req</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">writer</span>: <span class="ident">ChannelResponseWriter</span>);
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ServerNode</span><span class="op">&gt;</span> <span class="kw">crate</span>::<span class="ident">CommandHandler</span><span class="op">&lt;</span><span class="ident">Invocation</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">T</span> {
+<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ServerNode</span><span class="op">&gt;</span> <span class="kw">crate</span>::<span class="ident">CommandHandler</span> <span class="kw">for</span> <span class="ident">T</span> {
+    <span class="kw">type</span> <span class="ident">Command</span> <span class="op">=</span> <span class="ident">Invocation</span>;
     <span class="doccomment">/// Handle incoming gRPC events for a [`ServerNode`].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Invoking the given `node`&#39;s [`invoke`] method for each incoming request that</span>
@@ -521,7 +572,7 @@
     <span class="doccomment">/// to be written to.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`invoke`]: ServerNode::invoke</span>
-    <span class="kw">fn</span> <span class="ident">handle_command</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">invocation</span>: <span class="ident">Invocation</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std</span>::<span class="ident">result</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">OakError</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">handle_command</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">invocation</span>: <span class="ident">Invocation</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">anyhow</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">response_writer</span> <span class="op">=</span> <span class="ident">ChannelResponseWriter</span>::<span class="ident">new</span>(
             <span class="ident">invocation</span>
                 .<span class="ident">sender</span>
@@ -599,19 +650,30 @@
     <span class="ident">R</span>: <span class="ident">prost</span>::<span class="ident">Message</span>,
 {
     <span class="comment">// Create a new channel for request message delivery.</span>
-    <span class="kw">let</span> (<span class="ident">req_sender</span>, <span class="ident">req_receiver</span>) <span class="op">=</span>
-        <span class="kw">crate</span>::<span class="ident">io</span>::<span class="ident">channel_create</span>::<span class="op">&lt;</span><span class="ident">GrpcRequest</span><span class="op">&gt;</span>().<span class="ident">expect</span>(<span class="string">&quot;failed to create channel&quot;</span>);
+    <span class="comment">// TODO(#1739): Don&#39;t use privilege automatically.</span>
+    <span class="kw">let</span> (<span class="ident">req_sender</span>, <span class="ident">req_receiver</span>) <span class="op">=</span> <span class="kw">crate</span>::<span class="ident">io</span>::<span class="ident">channel_create_with_downgrade</span>::<span class="op">&lt;</span><span class="ident">GrpcRequest</span><span class="op">&gt;</span>(
+        <span class="string">&quot;gRPC request&quot;</span>,
+        <span class="kw-2">&amp;</span><span class="ident">Label</span>::<span class="ident">public_untrusted</span>(),
+    )
+    .<span class="ident">expect</span>(<span class="string">&quot;failed to create channel&quot;</span>);
 
     <span class="comment">// Put the request in a GrpcRequest wrapper and send it into the request</span>
     <span class="comment">// message channel.</span>
     <span class="kw">let</span> <span class="ident">req</span> <span class="op">=</span> <span class="ident">oak_services</span>::<span class="ident">grpc</span>::<span class="ident">encap_request</span>(<span class="ident">req</span>, <span class="ident">method_name</span>)
         .<span class="ident">expect</span>(<span class="string">&quot;failed to serialize GrpcRequest&quot;</span>);
-    <span class="ident">req_sender</span>.<span class="ident">send</span>(<span class="kw-2">&amp;</span><span class="ident">req</span>).<span class="ident">expect</span>(<span class="string">&quot;failed to write to channel&quot;</span>);
+    <span class="comment">// TODO(#1739): Don&#39;t use privilege automatically.</span>
+    <span class="ident">req_sender</span>
+        .<span class="ident">send_with_downgrade</span>(<span class="kw-2">&amp;</span><span class="ident">req</span>)
+        .<span class="ident">expect</span>(<span class="string">&quot;failed to write to channel&quot;</span>);
     <span class="ident">req_sender</span>.<span class="ident">close</span>().<span class="ident">expect</span>(<span class="string">&quot;failed to close channel&quot;</span>);
 
     <span class="comment">// Create a new channel for responses to arrive on.</span>
-    <span class="kw">let</span> (<span class="ident">rsp_sender</span>, <span class="ident">rsp_receiver</span>) <span class="op">=</span>
-        <span class="kw">crate</span>::<span class="ident">io</span>::<span class="ident">channel_create</span>::<span class="op">&lt;</span><span class="ident">GrpcResponse</span><span class="op">&gt;</span>().<span class="ident">expect</span>(<span class="string">&quot;failed to create channel&quot;</span>);
+    <span class="comment">// TODO(#1739): Don&#39;t use privilege automatically.</span>
+    <span class="kw">let</span> (<span class="ident">rsp_sender</span>, <span class="ident">rsp_receiver</span>) <span class="op">=</span> <span class="kw">crate</span>::<span class="ident">io</span>::<span class="ident">channel_create_with_downgrade</span>::<span class="op">&lt;</span><span class="ident">GrpcResponse</span><span class="op">&gt;</span>(
+        <span class="string">&quot;gRPC response&quot;</span>,
+        <span class="kw-2">&amp;</span><span class="ident">Label</span>::<span class="ident">public_untrusted</span>(),
+    )
+    .<span class="ident">expect</span>(<span class="string">&quot;failed to create channel&quot;</span>);
 
     <span class="comment">// Build an Invocation holding the two channels and send it down the</span>
     <span class="comment">// specified channel.</span>
@@ -619,8 +681,10 @@
         <span class="ident">receiver</span>: <span class="prelude-val">Some</span>(<span class="ident">req_receiver</span>.<span class="ident">clone</span>()),
         <span class="ident">sender</span>: <span class="prelude-val">Some</span>(<span class="ident">rsp_sender</span>.<span class="ident">clone</span>()),
     };
+
+    <span class="comment">// TODO(#1739): Don&#39;t use privilege automatically.</span>
     <span class="ident">invocation_channel</span>
-        .<span class="ident">send</span>(<span class="kw-2">&amp;</span><span class="ident">invocation</span>)
+        .<span class="ident">send_with_downgrade</span>(<span class="kw-2">&amp;</span><span class="ident">invocation</span>)
         .<span class="ident">expect</span>(<span class="string">&quot;failed to write invocation to channel&quot;</span>);
     <span class="ident">req_receiver</span>.<span class="ident">close</span>().<span class="ident">expect</span>(<span class="string">&quot;failed to close channel&quot;</span>);
     <span class="ident">rsp_sender</span>.<span class="ident">close</span>().<span class="ident">expect</span>(<span class="string">&quot;failed to close channel&quot;</span>);
@@ -656,76 +720,101 @@
     <span class="prelude-val">Ok</span>(<span class="ident">rsp</span>)
 }
 
-<span class="doccomment">/// Generic function that handles request deserialization and response</span>
-<span class="doccomment">/// serialization (and sending down a channel) for a function that handles a</span>
-<span class="doccomment">/// request/response pair.</span>
+<span class="doccomment">/// Trait implemented by all server method variants, applied to a server receiver instance having</span>
+<span class="doccomment">/// concrete type `T`.</span>
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Invocable</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// Generic function that handles request deserialization and response serialization (and</span>
+    <span class="doccomment">/// sending down a channel) for a function that handles a request / response pair (either unary</span>
+    <span class="doccomment">/// or streaming).</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Panics if [de-]serialization or channel operations fail.</span>
+    <span class="kw">fn</span> <span class="ident">invoke</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">target</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span>, <span class="ident">req</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">writer</span>: <span class="ident">ChannelResponseWriter</span>);
+}
+
+<span class="doccomment">/// Enum with variants for all combinations of {request, response} × {unary , streaming}, each</span>
+<span class="doccomment">/// containing a pointer to the function of the appropriate type defined on a service</span>
+<span class="doccomment">/// implementation.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// Panics if [de-]serialization or channel operations fail.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">handle_req_rsp</span><span class="op">&lt;</span><span class="ident">C</span>, <span class="ident">R</span>, <span class="ident">Q</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="ident">node_fn</span>: <span class="ident">C</span>, <span class="ident">req</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">writer</span>: <span class="ident">ChannelResponseWriter</span>)
+<span class="doccomment">/// The functions are &quot;uncurried&quot;, i.e. they include an explicit parameter for the receiver type,</span>
+<span class="doccomment">/// which corresponds to `self` in the method definition.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Note that the variants with response stream do not make use of the type parameter `Q`, so this</span>
+<span class="doccomment">/// must be manually specified when creating one of those instances if the compiler cannot infer it</span>
+<span class="doccomment">/// from the context.</span>
+<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">ServerMethod</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">R</span>, <span class="ident">Q</span><span class="op">&gt;</span> {
+    <span class="ident">UnaryUnary</span>(<span class="kw">fn</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span>, <span class="ident">R</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Q</span><span class="op">&gt;</span>),
+    <span class="ident">UnaryStream</span>(<span class="kw">fn</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span>, <span class="ident">R</span>, <span class="ident">ChannelResponseWriter</span>)),
+    <span class="ident">StreamUnary</span>(<span class="kw">fn</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Q</span><span class="op">&gt;</span>),
+    <span class="ident">StreamStream</span>(<span class="kw">fn</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>, <span class="ident">ChannelResponseWriter</span>)),
+}
+
+<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">R</span>, <span class="ident">Q</span><span class="op">&gt;</span> <span class="ident">Invocable</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ServerMethod</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">R</span>, <span class="ident">Q</span><span class="op">&gt;</span>
 <span class="kw">where</span>
-    <span class="ident">C</span>: <span class="ident">FnMut</span>(<span class="ident">R</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Q</span><span class="op">&gt;</span>,
     <span class="ident">R</span>: <span class="ident">prost</span>::<span class="ident">Message</span> <span class="op">+</span> <span class="ident">Default</span>,
     <span class="ident">Q</span>: <span class="ident">prost</span>::<span class="ident">Message</span>,
 {
-    <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">R</span>::<span class="ident">decode</span>(<span class="ident">req</span>).<span class="ident">expect</span>(<span class="string">&quot;Failed to parse request protobuf message&quot;</span>);
-    <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">node_fn</span>(<span class="ident">r</span>) {
-        <span class="prelude-val">Ok</span>(<span class="ident">rsp</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">writer</span>.<span class="ident">write</span>(<span class="kw-2">&amp;</span><span class="ident">rsp</span>, <span class="ident">WriteMode</span>::<span class="ident">Close</span>),
-        <span class="prelude-val">Err</span>(<span class="ident">status</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">writer</span>.<span class="ident">close</span>(<span class="prelude-val">Err</span>(<span class="ident">status</span>)),
-    };
-    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span> <span class="ident">result</span> {
-        <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;Failed to process response: {:?}&quot;</span>, <span class="ident">e</span>)
+    <span class="kw">fn</span> <span class="ident">invoke</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">target</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span>, <span class="ident">req</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">writer</span>: <span class="ident">ChannelResponseWriter</span>) {
+        <span class="kw">match</span> <span class="self">self</span> {
+            <span class="ident">ServerMethod</span>::<span class="ident">UnaryUnary</span>(<span class="ident">server_method</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">R</span>::<span class="ident">decode</span>(<span class="ident">req</span>).<span class="ident">expect</span>(<span class="string">&quot;Failed to parse request protobuf message&quot;</span>);
+                <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">server_method</span>(<span class="ident">target</span>, <span class="ident">r</span>) {
+                    <span class="prelude-val">Ok</span>(<span class="ident">rsp</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">writer</span>.<span class="ident">write</span>(<span class="kw-2">&amp;</span><span class="ident">rsp</span>, <span class="ident">WriteMode</span>::<span class="ident">Close</span>),
+                    <span class="prelude-val">Err</span>(<span class="ident">status</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">writer</span>.<span class="ident">close</span>(<span class="prelude-val">Err</span>(<span class="ident">status</span>)),
+                };
+                <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span> <span class="ident">result</span> {
+                    <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;Failed to process response: {:?}&quot;</span>, <span class="ident">e</span>)
+                }
+            }
+            <span class="ident">ServerMethod</span>::<span class="ident">UnaryStream</span>(<span class="ident">server_method</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">R</span>::<span class="ident">decode</span>(<span class="ident">req</span>).<span class="ident">expect</span>(<span class="string">&quot;Failed to parse request protobuf message&quot;</span>);
+                <span class="ident">server_method</span>(<span class="ident">target</span>, <span class="ident">r</span>, <span class="ident">writer</span>)
+            }
+            <span class="ident">ServerMethod</span>::<span class="ident">StreamUnary</span>(<span class="ident">server_method</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="comment">// TODO(#97): better client-side streaming</span>
+                <span class="kw">let</span> <span class="ident">rr</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">R</span>::<span class="ident">decode</span>(<span class="ident">req</span>).<span class="ident">expect</span>(<span class="string">&quot;Failed to parse request protobuf message&quot;</span>)];
+                <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">server_method</span>(<span class="ident">target</span>, <span class="ident">rr</span>) {
+                    <span class="prelude-val">Ok</span>(<span class="ident">rsp</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">writer</span>.<span class="ident">write</span>(<span class="kw-2">&amp;</span><span class="ident">rsp</span>, <span class="ident">WriteMode</span>::<span class="ident">Close</span>),
+                    <span class="prelude-val">Err</span>(<span class="ident">status</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">writer</span>.<span class="ident">close</span>(<span class="prelude-val">Err</span>(<span class="ident">status</span>)),
+                };
+                <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span> <span class="ident">result</span> {
+                    <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;Failed to process response: {:?}&quot;</span>, <span class="ident">e</span>)
+                }
+            }
+            <span class="ident">ServerMethod</span>::<span class="ident">StreamStream</span>(<span class="ident">server_method</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="comment">// TODO(#97): better client-side streaming</span>
+                <span class="kw">let</span> <span class="ident">rr</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">R</span>::<span class="ident">decode</span>(<span class="ident">req</span>).<span class="ident">expect</span>(<span class="string">&quot;Failed to parse request protobuf message&quot;</span>)];
+                <span class="ident">server_method</span>(<span class="ident">target</span>, <span class="ident">rr</span>, <span class="ident">writer</span>)
+            }
+        }
     }
 }
 
-<span class="doccomment">/// Generic function that handles request deserialization and response</span>
-<span class="doccomment">/// serialization (and sending down a channel) for a function that handles a</span>
-<span class="doccomment">/// request and streams responses.</span>
+<span class="doccomment">/// Implements the [`ServerNode`] trait for the specified type using the provided dispatcher, which</span>
+<span class="doccomment">/// is generated by the `oak_util` crate from the protobuf service definition.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// Panics if [de-]serialization or channel operations fail.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">handle_req_stream</span><span class="op">&lt;</span><span class="ident">C</span>, <span class="ident">R</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="ident">node_fn</span>: <span class="ident">C</span>, <span class="ident">req</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">writer</span>: <span class="ident">ChannelResponseWriter</span>)
-<span class="kw">where</span>
-    <span class="ident">C</span>: <span class="ident">FnMut</span>(<span class="ident">R</span>, <span class="ident">ChannelResponseWriter</span>),
-    <span class="ident">R</span>: <span class="ident">prost</span>::<span class="ident">Message</span> <span class="op">+</span> <span class="ident">Default</span>,
-{
-    <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">R</span>::<span class="ident">decode</span>(<span class="ident">req</span>).<span class="ident">expect</span>(<span class="string">&quot;Failed to parse request protobuf message&quot;</span>);
-    <span class="ident">node_fn</span>(<span class="ident">r</span>, <span class="ident">writer</span>)
-}
-
-<span class="doccomment">/// Generic function that handles request deserialization and response</span>
-<span class="doccomment">/// serialization (and sending down a channel) for a function that handles a</span>
-<span class="doccomment">/// stream of requests to produce a response.</span>
+<span class="doccomment">/// ```ignore</span>
+<span class="doccomment">/// #[derive(Default)]</span>
+<span class="doccomment">/// struct Handler;</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// Panics if [de-]serialization or channel operations fail.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">handle_stream_rsp</span><span class="op">&lt;</span><span class="ident">C</span>, <span class="ident">R</span>, <span class="ident">Q</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="ident">node_fn</span>: <span class="ident">C</span>, <span class="ident">req</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">writer</span>: <span class="ident">ChannelResponseWriter</span>)
-<span class="kw">where</span>
-    <span class="ident">C</span>: <span class="ident">FnMut</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Q</span><span class="op">&gt;</span>,
-    <span class="ident">R</span>: <span class="ident">prost</span>::<span class="ident">Message</span> <span class="op">+</span> <span class="ident">Default</span>,
-    <span class="ident">Q</span>: <span class="ident">prost</span>::<span class="ident">Message</span> <span class="op">+</span> <span class="ident">Default</span>,
-{
-    <span class="comment">// TODO(#97): better client-side streaming</span>
-    <span class="kw">let</span> <span class="ident">rr</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">R</span>::<span class="ident">decode</span>(<span class="ident">req</span>).<span class="ident">expect</span>(<span class="string">&quot;Failed to parse request protobuf message&quot;</span>)];
-    <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">node_fn</span>(<span class="ident">rr</span>) {
-        <span class="prelude-val">Ok</span>(<span class="ident">rsp</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">writer</span>.<span class="ident">write</span>(<span class="kw-2">&amp;</span><span class="ident">rsp</span>, <span class="ident">WriteMode</span>::<span class="ident">Close</span>),
-        <span class="prelude-val">Err</span>(<span class="ident">status</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">writer</span>.<span class="ident">close</span>(<span class="prelude-val">Err</span>(<span class="ident">status</span>)),
+<span class="doccomment">/// oak::impl_dispatcher!(impl Handler : ServiceDispatcher);</span>
+<span class="doccomment">/// ```</span>
+<span class="attribute">#[<span class="ident">macro_export</span>]</span>
+<span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">impl_dispatcher</span> {
+    (<span class="kw">impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">handler</span>:<span class="ident">ty</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">dispatcher</span>:<span class="ident">ty</span>) <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="kw">impl</span> ::<span class="ident">oak</span>::<span class="ident">grpc</span>::<span class="ident">ServerNode</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">handler</span> {
+            <span class="kw">fn</span> <span class="ident">invoke</span>(
+                <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+                <span class="ident">method_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+                <span class="ident">req</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                <span class="ident">writer</span>: ::<span class="ident">oak</span>::<span class="ident">grpc</span>::<span class="ident">ChannelResponseWriter</span>,
+            ) {
+                <span class="kw">match</span> <span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">dispatcher</span><span class="op">&gt;</span>::<span class="ident">server_method</span>(<span class="ident">method_name</span>) {
+                    <span class="prelude-val">Some</span>(<span class="ident">server_method</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">server_method</span>.<span class="ident">invoke</span>(<span class="self">self</span>, <span class="ident">req</span>, <span class="ident">writer</span>),
+                    <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> ::<span class="ident">log</span>::<span class="macro">error</span><span class="macro">!</span>(<span class="string">&quot;unknown method name: {}&quot;</span>, <span class="ident">method_name</span>),
+                }
+            }
+        }
     };
-    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span> <span class="ident">result</span> {
-        <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;Failed to process response: {:?}&quot;</span>, <span class="ident">e</span>)
-    }
-}
-
-<span class="doccomment">/// Generic function that handles request deserialization and response</span>
-<span class="doccomment">/// serialization (and sending down a channel) for a function that handles a</span>
-<span class="doccomment">/// stream of requests to produce a stream of responses.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Panics if [de-]serialization or channel operations fail.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">handle_stream_stream</span><span class="op">&lt;</span><span class="ident">C</span>, <span class="ident">R</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="ident">node_fn</span>: <span class="ident">C</span>, <span class="ident">req</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">writer</span>: <span class="ident">ChannelResponseWriter</span>)
-<span class="kw">where</span>
-    <span class="ident">C</span>: <span class="ident">FnMut</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>, <span class="ident">ChannelResponseWriter</span>),
-    <span class="ident">R</span>: <span class="ident">prost</span>::<span class="ident">Message</span> <span class="op">+</span> <span class="ident">Default</span>,
-{
-    <span class="comment">// TODO(#97): better client-side streaming</span>
-    <span class="kw">let</span> <span class="ident">rr</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">R</span>::<span class="ident">decode</span>(<span class="ident">req</span>).<span class="ident">expect</span>(<span class="string">&quot;Failed to parse request protobuf message&quot;</span>)];
-    <span class="ident">node_fn</span>(<span class="ident">rr</span>, <span class="ident">writer</span>)
 }
 </pre></div>
 </section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../../";window.currentCrate = "oak";</script><script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script><script defer src="../../../search-index.js"></script></body></html>

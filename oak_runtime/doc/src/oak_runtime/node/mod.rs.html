@@ -1,4 +1,7 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/node/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../oak_runtime/index.html'><div class='logo-container'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/node/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+<link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png">
+<link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../oak_runtime/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
+                <a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -178,6 +181,47 @@
 <span id="178">178</span>
 <span id="179">179</span>
 <span id="180">180</span>
+<span id="181">181</span>
+<span id="182">182</span>
+<span id="183">183</span>
+<span id="184">184</span>
+<span id="185">185</span>
+<span id="186">186</span>
+<span id="187">187</span>
+<span id="188">188</span>
+<span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
+<span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
+<span id="203">203</span>
+<span id="204">204</span>
+<span id="205">205</span>
+<span id="206">206</span>
+<span id="207">207</span>
+<span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
+<span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
+<span id="220">220</span>
+<span id="221">221</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">//</span>
 <span class="comment">// Copyright 2020 The Project Oak Authors</span>
@@ -199,13 +243,16 @@
 
 <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">NodePrivilege</span>, <span class="ident">RuntimeProxy</span>, <span class="ident">SecureServerConfiguration</span>, <span class="ident">SignatureTable</span>};
 <span class="kw">use</span> <span class="ident">oak_abi</span>::<span class="ident">proto</span>::<span class="ident">oak</span>::<span class="ident">application</span>::{
-    <span class="ident">node_configuration</span>::<span class="ident">ConfigType</span>, <span class="ident">ApplicationConfiguration</span>, <span class="ident">LogConfiguration</span>, <span class="ident">NodeConfiguration</span>,
+    <span class="ident">node_configuration</span>::<span class="ident">ConfigType</span>, <span class="ident">ApplicationConfiguration</span>, <span class="ident">CryptoConfiguration</span>,
+    <span class="ident">LogConfiguration</span>, <span class="ident">NodeConfiguration</span>,
 };
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">net</span>::<span class="ident">AddrParseError</span>;
 <span class="kw">use</span> <span class="ident">tokio</span>::<span class="ident">sync</span>::<span class="ident">oneshot</span>;
 
+<span class="kw">mod</span> <span class="ident">crypto</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">grpc</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">http</span>;
+<span class="kw">mod</span> <span class="ident">invocation</span>;
 <span class="kw">mod</span> <span class="ident">logger</span>;
 <span class="kw">mod</span> <span class="ident">roughtime</span>;
 <span class="kw">mod</span> <span class="ident">storage</span>;
@@ -213,10 +260,20 @@
 
 <span class="doccomment">/// Trait encapsulating execution of a Node or pseudo-Node.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Node</span>: <span class="ident">Send</span> {
-    <span class="doccomment">/// Return a name for this type of Node.</span>
+    <span class="doccomment">/// Returns a name for this type of Node.</span>
     <span class="kw">fn</span> <span class="ident">node_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>;
 
-    <span class="doccomment">/// Execute the Node, using the provided `Runtime` reference and initial handle.  The method</span>
+    <span class="doccomment">/// Returns a value indicating the isolation of a Node. If a Node is sandboxed (e.g. a Wasm</span>
+    <span class="doccomment">/// node), the sandbox restricts external communcations. Uncontrolled nodes (e.g pseudo Nodes</span>
+    <span class="doccomment">/// that are part of the runtime) have no restrictions enforced on external communications.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Unless a node uses a trusted sandbox to restrict communications this function should always</span>
+    <span class="doccomment">/// return [`NodeIsolation::Uncontrolled`]</span>
+    <span class="kw">fn</span> <span class="ident">isolation</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">NodeIsolation</span> {
+        <span class="ident">NodeIsolation</span>::<span class="ident">Uncontrolled</span>
+    }
+
+    <span class="doccomment">/// Executes the Node, using the provided `Runtime` reference and initial handle.  The method</span>
     <span class="doccomment">/// should continue execution until the Node terminates.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// `notify_receiver` receives a notification from the Runtime upon termination. This</span>
@@ -228,9 +285,17 @@
         <span class="ident">notify_receiver</span>: <span class="ident">oneshot</span>::<span class="ident">Receiver</span><span class="op">&lt;</span>()<span class="op">&gt;</span>,
     );
 
+    <span class="doccomment">/// Gets the privilege associated with the Node.</span>
     <span class="kw">fn</span> <span class="ident">get_privilege</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">NodePrivilege</span> {
         <span class="ident">NodePrivilege</span>::<span class="ident">default</span>()
     }
+}
+
+<span class="doccomment">/// Indication of the level of isolation of a node.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
+<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">NodeIsolation</span> {
+    <span class="ident">Sandboxed</span>,
+    <span class="ident">Uncontrolled</span>,
 }
 
 <span class="doccomment">/// A enumeration for errors occuring when creating a new [`Node`] instance.</span>
@@ -283,10 +348,13 @@
 <span class="kw">impl</span> <span class="ident">NodeFactory</span><span class="op">&lt;</span><span class="ident">NodeConfiguration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ServerNodeFactory</span> {
     <span class="kw">fn</span> <span class="ident">create_node</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
+        <span class="ident">node_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">node_configuration</span>: <span class="kw-2">&amp;</span><span class="ident">NodeConfiguration</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Node</span><span class="op">&gt;</span>, <span class="ident">ConfigurationError</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">node_name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">node_configuration</span>.<span class="ident">name</span>;
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">dyn</span> <span class="ident">Node</span><span class="op">&gt;</span>, <span class="ident">ConfigurationError</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">node_configuration</span>.<span class="ident">config_type</span> {
+            <span class="prelude-val">Some</span>(<span class="ident">ConfigType</span>::<span class="ident">CryptoConfig</span>(<span class="ident">CryptoConfiguration</span> {})) <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="prelude-val">Ok</span>(<span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">crypto</span>::<span class="ident">CryptoNode</span>::<span class="ident">new</span>(<span class="ident">node_name</span>)))
+            }
             <span class="prelude-val">Some</span>(<span class="ident">ConfigType</span>::<span class="ident">LogConfig</span>(<span class="ident">LogConfiguration</span> {})) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="prelude-val">Ok</span>(<span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">logger</span>::<span class="ident">LogNode</span>::<span class="ident">new</span>(<span class="ident">node_name</span>)))
             }
@@ -314,19 +382,17 @@
                 <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">signature_table</span>,
             )<span class="question-mark">?</span>)),
             <span class="prelude-val">Some</span>(<span class="ident">ConfigType</span>::<span class="ident">GrpcClientConfig</span>(<span class="ident">config</span>)) <span class="op">=</span><span class="op">&gt;</span> {
-                <span class="kw">let</span> <span class="ident">grpc_configuration</span> <span class="op">=</span> <span class="self">self</span>
+                <span class="kw">let</span> <span class="ident">grpc_client_root_tls_certificate</span> <span class="op">=</span> <span class="self">self</span>
                     .<span class="ident">secure_server_configuration</span>
                     .<span class="ident">clone</span>()
                     .<span class="ident">grpc_config</span>
-                    .<span class="ident">expect</span>(<span class="string">&quot;no gRPC identity provided to Oak Runtime&quot;</span>);
+                    .<span class="ident">expect</span>(<span class="string">&quot;no gRPC identity provided to Oak Runtime&quot;</span>)
+                    .<span class="ident">grpc_client_root_tls_certificate</span>
+                    .<span class="ident">expect</span>(<span class="string">&quot;no root TLS certificate provided to Oak Runtime&quot;</span>);
                 <span class="prelude-val">Ok</span>(<span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">grpc</span>::<span class="ident">client</span>::<span class="ident">GrpcClientNode</span>::<span class="ident">new</span>(
                     <span class="ident">node_name</span>,
                     <span class="ident">config</span>.<span class="ident">clone</span>(),
-                    <span class="ident">grpc_configuration</span>
-                        .<span class="ident">grpc_client_root_tls_certificate</span>
-                        .<span class="ident">as_ref</span>()
-                        .<span class="ident">expect</span>(<span class="string">&quot;no gRPC client root TLS certificate provided to Oak Runtime&quot;</span>)
-                        .<span class="ident">clone</span>(),
+                    <span class="ident">grpc_client_root_tls_certificate</span>,
                 )<span class="question-mark">?</span>))
             }
             <span class="prelude-val">Some</span>(<span class="ident">ConfigType</span>::<span class="ident">RoughtimeClientConfig</span>(<span class="ident">config</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">Box</span>::<span class="ident">new</span>(
@@ -342,10 +408,24 @@
                     .<span class="ident">clone</span>()
                     .<span class="ident">expect</span>(<span class="string">&quot;no TLS configuration for HTTP servers provided to Oak Runtime&quot;</span>)
                     .<span class="ident">tls_config</span>;
-                <span class="prelude-val">Ok</span>(<span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">http</span>::<span class="ident">HttpServerNode</span>::<span class="ident">new</span>(
+                <span class="prelude-val">Ok</span>(<span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">http</span>::<span class="ident">server</span>::<span class="ident">HttpServerNode</span>::<span class="ident">new</span>(
                     <span class="ident">node_name</span>,
                     <span class="ident">config</span>.<span class="ident">clone</span>(),
                     <span class="ident">tls_config</span>,
+                )<span class="question-mark">?</span>))
+            }
+            <span class="prelude-val">Some</span>(<span class="ident">ConfigType</span>::<span class="ident">HttpClientConfig</span>(<span class="ident">config</span>)) <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="kw">let</span> <span class="ident">http_client_root_tls_certificate</span> <span class="op">=</span> <span class="self">self</span>
+                    .<span class="ident">secure_server_configuration</span>
+                    .<span class="ident">http_config</span>
+                    .<span class="ident">clone</span>()
+                    .<span class="ident">expect</span>(<span class="string">&quot;no HTTP configuration provided to Oak Runtime&quot;</span>)
+                    .<span class="ident">http_client_root_tls_certificate</span>
+                    .<span class="ident">expect</span>(<span class="string">&quot;no root TLS certificate provided to Oak Runtime&quot;</span>);
+                <span class="prelude-val">Ok</span>(<span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">http</span>::<span class="ident">client</span>::<span class="ident">HttpClientNode</span>::<span class="ident">new</span>(
+                    <span class="ident">node_name</span>,
+                    <span class="ident">config</span>.<span class="ident">clone</span>(),
+                    <span class="ident">http_client_root_tls_certificate</span>,
                 )<span class="question-mark">?</span>))
             }
             <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ConfigurationError</span>::<span class="ident">InvalidNodeConfiguration</span>),
@@ -356,8 +436,13 @@
 <span class="doccomment">/// A trait implemented by a concrete factory of nodes that creates nodes based on a Node</span>
 <span class="doccomment">/// configuration of type `T`.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">NodeFactory</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Creates a new [`Node`] instance based on the provided Node configuration information.</span>
-    <span class="kw">fn</span> <span class="ident">create_node</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">node_configuration</span>: <span class="kw-2">&amp;</span><span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Node</span><span class="op">&gt;</span>, <span class="ident">ConfigurationError</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Creates a new [`Node`] instance with the specified name and based on the provided Node</span>
+    <span class="doccomment">/// configuration information.</span>
+    <span class="kw">fn</span> <span class="ident">create_node</span>(
+        <span class="kw-2">&amp;</span><span class="self">self</span>,
+        <span class="ident">node_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">node_configuration</span>: <span class="kw-2">&amp;</span><span class="ident">T</span>,
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">dyn</span> <span class="ident">Node</span><span class="op">&gt;</span>, <span class="ident">ConfigurationError</span><span class="op">&gt;</span>;
 }
 </pre></div>
 </section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../../";window.currentCrate = "oak_runtime";</script><script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script><script defer src="../../../search-index.js"></script></body></html>

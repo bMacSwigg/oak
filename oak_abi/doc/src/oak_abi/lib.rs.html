@@ -1,4 +1,7 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../oak_abi/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="alternate icon" type="image/png" href="../../favicon-16x16.png">
+<link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../oak_abi/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
+                <a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -233,6 +236,75 @@
 <span id="233">233</span>
 <span id="234">234</span>
 <span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
+<span id="241">241</span>
+<span id="242">242</span>
+<span id="243">243</span>
+<span id="244">244</span>
+<span id="245">245</span>
+<span id="246">246</span>
+<span id="247">247</span>
+<span id="248">248</span>
+<span id="249">249</span>
+<span id="250">250</span>
+<span id="251">251</span>
+<span id="252">252</span>
+<span id="253">253</span>
+<span id="254">254</span>
+<span id="255">255</span>
+<span id="256">256</span>
+<span id="257">257</span>
+<span id="258">258</span>
+<span id="259">259</span>
+<span id="260">260</span>
+<span id="261">261</span>
+<span id="262">262</span>
+<span id="263">263</span>
+<span id="264">264</span>
+<span id="265">265</span>
+<span id="266">266</span>
+<span id="267">267</span>
+<span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
+<span id="274">274</span>
+<span id="275">275</span>
+<span id="276">276</span>
+<span id="277">277</span>
+<span id="278">278</span>
+<span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
+<span id="290">290</span>
+<span id="291">291</span>
+<span id="292">292</span>
+<span id="293">293</span>
+<span id="294">294</span>
+<span id="295">295</span>
+<span id="296">296</span>
+<span id="297">297</span>
+<span id="298">298</span>
+<span id="299">299</span>
+<span id="300">300</span>
+<span id="301">301</span>
+<span id="302">302</span>
+<span id="303">303</span>
+<span id="304">304</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">//</span>
 <span class="comment">// Copyright 2019 The Project Oak Authors</span>
@@ -266,7 +338,7 @@
 
 <span class="kw">impl</span> <span class="ident">std</span>::<span class="ident">error</span>::<span class="ident">Error</span> <span class="kw">for</span> <span class="ident">OakStatus</span> {}
 
-<span class="doccomment">/// The key used for encoded Labels in gRPC metadata.</span>
+<span class="doccomment">/// The key used for protobuf encoded [Label](crate::label::Label) in gRPC metadata.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The `-bin` suffix allows sending binary data for this metadata key, see:</span>
 <span class="doccomment">///  https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md.</span>
@@ -274,11 +346,29 @@
 <span class="doccomment">/// Keep in sync with /oak/common/label.cc.</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">OAK_LABEL_GRPC_METADATA_KEY</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;x-oak-label-bin&quot;</span>;
 
-<span class="doccomment">/// The header key used for JSON formatted Labels in HTTP requests.</span>
+<span class="doccomment">/// The key used for protobuf encoded [signed authentication</span>
+<span class="doccomment">/// challenge](crate::proto::oak::identity::SignedChallenge) in gRPC metadata.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The `-bin` suffix allows sending binary data for this metadata key, see:</span>
+<span class="doccomment">///  https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md.</span>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">OAK_SIGNED_CHALLENGE_GRPC_METADATA_KEY</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;x-oak-signed-auth-challenge-bin&quot;</span>;
+
+<span class="doccomment">/// The HTTP header key used for JSON encoded [Label](crate::label::Label) in HTTP requests.</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">OAK_LABEL_HTTP_JSON_KEY</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;oak-label&quot;</span>;
 
-<span class="doccomment">/// The header key used for protobuf encoded Labels in HTTP requests.</span>
+<span class="doccomment">/// The HTTP header key used for protobuf encoded [Label](crate::label::Label) in HTTP requests.</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">OAK_LABEL_HTTP_PROTOBUF_KEY</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;oak-label-bin&quot;</span>;
+
+<span class="doccomment">/// The HTTP header key used for JSON encoded [signed authentication</span>
+<span class="doccomment">/// challenge](crate::proto::oak::identity::SignedChallenge).</span>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">OAK_SIGNED_CHALLENGE_HTTP_JSON_KEY</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;oak-signed-auth-challenge&quot;</span>;
+
+<span class="doccomment">/// The HTTP header key used for protobuf encoded [signed authentication</span>
+<span class="doccomment">/// challenge](crate::proto::oak::identity::SignedChallenge).</span>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">OAK_SIGNED_CHALLENGE_HTTP_PROTOBUF_KEY</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;oak-signed-auth-challenge-bin&quot;</span>;
+
+<span class="comment">// TODO(#1357): Remove, or move to tests, when we have a per-connection challenge string.</span>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">OAK_CHALLENGE</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;oak-challenge&quot;</span>;
 
 <span class="doccomment">/// Handle used to identify read or write channel halves.</span>
 <span class="doccomment">///</span>
@@ -366,10 +456,23 @@
         <span class="ident">handle_count</span>: <span class="ident">u32</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u32</span>;
 
+    <span class="doccomment">/// The same as [`channel_write`](#method.channel_write), but also applies the current Node&#39;s</span>
+    <span class="doccomment">/// downgrade privilege when checking IFC restrictions.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">channel_write_with_downgrade</span>(
+        <span class="ident">handle</span>: <span class="ident">u64</span>,
+        <span class="ident">buf</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
+        <span class="ident">size</span>: <span class="ident">usize</span>,
+        <span class="ident">handle_buf</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
+        <span class="ident">handle_count</span>: <span class="ident">u32</span>,
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u32</span>;
+
     <span class="doccomment">/// Create a new unidirectional Channel.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns handles for the the write and read halves of the Channel in the spaces given by</span>
     <span class="doccomment">/// `write` and `read`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The name to assign to the newly created Channel is provided in the memory area given by</span>
+    <span class="doccomment">/// `name_buf` and `name_len` as a UTF-8 encoded string.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The label to assign to the newly created Channel is provided in the memory area given by</span>
     <span class="doccomment">/// `label_buf` and `label_len`.</span>
@@ -380,9 +483,29 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">channel_create</span>(
         <span class="ident">write</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">u64</span>,
         <span class="ident">read</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">u64</span>,
+        <span class="ident">name_buf</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
+        <span class="ident">name_len</span>: <span class="ident">usize</span>,
         <span class="ident">label_buf</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
         <span class="ident">label_len</span>: <span class="ident">usize</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u32</span>;
+
+    <span class="doccomment">/// The same as [`channel_create`](#method.channel_create), but also applies the current Node&#39;s</span>
+    <span class="doccomment">/// downgrade privilege when checking IFC restrictions.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">channel_create_with_downgrade</span>(
+        <span class="ident">write</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">u64</span>,
+        <span class="ident">read</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">u64</span>,
+        <span class="ident">name_buf</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
+        <span class="ident">name_len</span>: <span class="ident">usize</span>,
+        <span class="ident">label_buf</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
+        <span class="ident">label_len</span>: <span class="ident">usize</span>,
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u32</span>;
+
+    <span class="doccomment">/// Create a new distinct handle to the same channel as `handle`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The new handle value is written to `cloned_handle_out`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Returns the status of the operation, as an [`OakStatus`] value.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">handle_clone</span>(<span class="ident">handle</span>: <span class="ident">u64</span>, <span class="ident">cloned_handle_out</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">u64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u32</span>;
 
     <span class="doccomment">/// Closes the channel identified by `handle`.</span>
     <span class="doccomment">///</span>
@@ -411,7 +534,7 @@
         <span class="ident">actual_size</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">u32</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u32</span>;
 
-    <span class="doccomment">/// Returns the label of the current calling node.</span>
+    <span class="doccomment">/// Returns the label of the current calling Node.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The label is stored into `label_buf` as a serialized [`Label`] protobuf message. The actual</span>
     <span class="doccomment">/// size of the serialized message is indicated by `actual_size`.</span>
@@ -426,7 +549,7 @@
     <span class="doccomment">/// [`Label`]: crate::label::Label</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">node_label_read</span>(<span class="ident">label_buf</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">u8</span>, <span class="ident">label_size</span>: <span class="ident">usize</span>, <span class="ident">actual_size</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u32</span>;
 
-    <span class="doccomment">/// Returns a label indicating the downgrade privilege of the current calling node.</span>
+    <span class="doccomment">/// Returns a label indicating the downgrade privilege of the current calling Node.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The label is stored into `label_buf` as a serialized [`Label`] protobuf message. The actual</span>
     <span class="doccomment">/// size of the serialized message is indicated by `actual_size`.</span>
@@ -444,6 +567,10 @@
 
     <span class="doccomment">/// Creates a new Node instance running code identified by a serialized [`NodeConfiguration`].</span>
     <span class="doccomment">///</span>
+    <span class="doccomment">/// The name of the new Node is provided in the memory area given by `name_buf` and `name_len`.</span>
+    <span class="doccomment">/// The name does not have to be unique and can be empty. It is used in logs to help identify</span>
+    <span class="doccomment">/// nodes for debugging purposes.</span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The serialized configuration object is provided in the memory area given by `config_buf` and</span>
     <span class="doccomment">/// `config_len`.</span>
     <span class="doccomment">///</span>
@@ -455,6 +582,20 @@
     <span class="doccomment">/// [`OakStatus`]: crate::OakStatus</span>
     <span class="doccomment">/// [`NodeConfiguration`]: crate::proto::oak::application::NodeConfiguration</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">node_create</span>(
+        <span class="ident">name_buf</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
+        <span class="ident">name_len</span>: <span class="ident">usize</span>,
+        <span class="ident">config_buf</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
+        <span class="ident">config_len</span>: <span class="ident">usize</span>,
+        <span class="ident">label_buf</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
+        <span class="ident">label_len</span>: <span class="ident">usize</span>,
+        <span class="ident">handle</span>: <span class="ident">u64</span>,
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u32</span>;
+
+    <span class="doccomment">/// The same as [`node_create`](#method.node_create), but also applies the current Node&#39;s</span>
+    <span class="doccomment">/// downgrade privilege when checking IFC restrictions.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">node_create_with_downgrade</span>(
+        <span class="ident">name_buf</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
+        <span class="ident">name_len</span>: <span class="ident">usize</span>,
         <span class="ident">config_buf</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
         <span class="ident">config_len</span>: <span class="ident">usize</span>,
         <span class="ident">label_buf</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,

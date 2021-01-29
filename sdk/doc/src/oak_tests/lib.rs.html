@@ -1,4 +1,7 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `rust/oak_tests/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../oak_tests/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `rust/oak_tests/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="alternate icon" type="image/png" href="../../favicon-16x16.png">
+<link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../oak_tests/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
+                <a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -247,6 +250,31 @@
 <span id="247">247</span>
 <span id="248">248</span>
 <span id="249">249</span>
+<span id="250">250</span>
+<span id="251">251</span>
+<span id="252">252</span>
+<span id="253">253</span>
+<span id="254">254</span>
+<span id="255">255</span>
+<span id="256">256</span>
+<span id="257">257</span>
+<span id="258">258</span>
+<span id="259">259</span>
+<span id="260">260</span>
+<span id="261">261</span>
+<span id="262">262</span>
+<span id="263">263</span>
+<span id="264">264</span>
+<span id="265">265</span>
+<span id="266">266</span>
+<span id="267">267</span>
+<span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
+<span id="274">274</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">//</span>
 <span class="comment">// Copyright 2019 The Project Oak Authors</span>
@@ -296,39 +324,44 @@
     <span class="ident">module_wasm_file_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">profile</span>: <span class="ident">Profile</span>,
 ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">anyhow</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-    <span class="comment">// Use a separate target dir for Wasm build artifacts. The precise name is not relevant, but it</span>
-    <span class="comment">// should end with `target` so that it gets automatically ignored by our `.gitignore`.</span>
-    <span class="kw">let</span> <span class="ident">target_dir</span> <span class="op">=</span> <span class="ident">PathBuf</span>::<span class="ident">from</span>(<span class="string">&quot;oak_tests/target&quot;</span>);
+    <span class="comment">// Use a fixed target directory, because `--target-dir` influences SHA256 hash of Wasm module.</span>
+    <span class="comment">// Directory should end with `target` so that it gets automatically ignored by our `.gitignore`.</span>
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">target_dir</span> <span class="op">=</span> <span class="ident">PathBuf</span>::<span class="ident">from</span>(<span class="ident">manifest_path</span>);
+    <span class="ident">target_dir</span>.<span class="ident">pop</span>();
+    <span class="ident">target_dir</span>.<span class="ident">push</span>(<span class="string">&quot;target&quot;</span>);
 
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">args</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[
         <span class="string">&quot;build&quot;</span>.<span class="ident">to_string</span>(),
         <span class="macro">format</span><span class="macro">!</span>(
             <span class="string">&quot;--target-dir={}&quot;</span>,
-            <span class="ident">target_dir</span>.<span class="ident">to_str</span>().<span class="ident">expect</span>(<span class="string">&quot;invalid target dir&quot;</span>)
+            <span class="ident">target_dir</span>.<span class="ident">to_str</span>().<span class="ident">expect</span>(<span class="string">&quot;Invalid target dir&quot;</span>)
         ),
         <span class="string">&quot;--target=wasm32-unknown-unknown&quot;</span>.<span class="ident">to_string</span>(),
         <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;--manifest-path={}&quot;</span>, <span class="ident">manifest_path</span>),
     ];
-    <span class="kw">match</span> <span class="ident">profile</span> {
-        <span class="ident">Profile</span>::<span class="ident">Release</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;--release&quot;</span>.<span class="ident">to_string</span>()),
-        <span class="ident">Profile</span>::<span class="ident">Debug</span> <span class="op">=</span><span class="op">&gt;</span> (),
-    }
+    <span class="kw">let</span> <span class="ident">profile_str</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">profile</span> {
+        <span class="ident">Profile</span>::<span class="ident">Release</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;--release&quot;</span>.<span class="ident">to_string</span>());
+            <span class="string">&quot;release&quot;</span>.<span class="ident">to_string</span>()
+        }
+        <span class="ident">Profile</span>::<span class="ident">Debug</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;debug&quot;</span>.<span class="ident">to_string</span>(),
+    };
 
     <span class="ident">Command</span>::<span class="ident">new</span>(<span class="string">&quot;cargo&quot;</span>)
         .<span class="ident">args</span>(<span class="ident">args</span>)
         .<span class="ident">env_remove</span>(<span class="string">&quot;RUSTFLAGS&quot;</span>)
         .<span class="ident">spawn</span>()
-        .<span class="ident">context</span>(<span class="string">&quot;could not spawn cargo build&quot;</span>)<span class="question-mark">?</span>
+        .<span class="ident">context</span>(<span class="string">&quot;Couldn&#39;t spawn cargo build&quot;</span>)<span class="question-mark">?</span>
         .<span class="ident">wait</span>()
-        .<span class="ident">context</span>(<span class="string">&quot;could not wait for cargo build to finish&quot;</span>)<span class="question-mark">?</span>;
+        .<span class="ident">context</span>(<span class="string">&quot;Couldn&#39;t wait for cargo build to finish&quot;</span>)<span class="question-mark">?</span>;
 
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">module_path</span> <span class="op">=</span> <span class="ident">target_dir</span>;
-    <span class="ident">module_path</span>.<span class="ident">push</span>(<span class="string">&quot;wasm32-unknown-unknown/debug&quot;</span>);
+    <span class="ident">module_path</span>.<span class="ident">push</span>(<span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;wasm32-unknown-unknown/{}&quot;</span>, <span class="ident">profile_str</span>));
     <span class="ident">module_path</span>.<span class="ident">push</span>(<span class="ident">module_wasm_file_name</span>);
 
-    <span class="macro">info</span><span class="macro">!</span>(<span class="string">&quot;compiled Wasm module path: {:?}&quot;</span>, <span class="ident">module_path</span>);
+    <span class="macro">info</span><span class="macro">!</span>(<span class="string">&quot;Compiled Wasm module path: {:?}&quot;</span>, <span class="ident">module_path</span>);
 
-    <span class="ident">std</span>::<span class="ident">fs</span>::<span class="ident">read</span>(<span class="ident">module_path</span>).<span class="ident">context</span>(<span class="string">&quot;could not read compiled module&quot;</span>)
+    <span class="ident">std</span>::<span class="ident">fs</span>::<span class="ident">read</span>(<span class="ident">module_path</span>).<span class="ident">context</span>(<span class="string">&quot;Couldn&#39;t read compiled module&quot;</span>)
 }
 
 <span class="doccomment">/// Default module name for the module under test.</span>
@@ -374,6 +407,7 @@
 
 <span class="doccomment">/// Build the configuration needed to launch a test Runtime instance that runs a single-Node</span>
 <span class="doccomment">/// application with the given Wasm module file name and entrypoint.</span>
+<span class="doccomment">/// Wasm module compiled with [`Profile::Release`] in order to keep its SHA256 hash.</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">runtime_config</span>(
     <span class="ident">module_wasm_file_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">entrypoint_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
@@ -384,7 +418,7 @@
         <span class="ident">compile_rust_wasm</span>(
             <span class="ident">DEFAULT_MODULE_MANIFEST</span>,
             <span class="ident">module_wasm_file_name</span>,
-            <span class="ident">Profile</span>::<span class="ident">Debug</span>,
+            <span class="ident">Profile</span>::<span class="ident">Release</span>,
         )
         .<span class="ident">expect</span>(<span class="string">&quot;failed to build wasm module&quot;</span>),
     )]
@@ -392,7 +426,13 @@
     .<span class="ident">cloned</span>()
     .<span class="ident">collect</span>();
 
-    <span class="ident">runtime_config_wasm</span>(<span class="ident">wasm</span>, <span class="ident">DEFAULT_MODULE_NAME</span>, <span class="ident">entrypoint_name</span>, <span class="ident">config_map</span>)
+    <span class="ident">runtime_config_wasm</span>(
+        <span class="ident">wasm</span>,
+        <span class="ident">DEFAULT_MODULE_NAME</span>,
+        <span class="ident">entrypoint_name</span>,
+        <span class="ident">config_map</span>,
+        <span class="ident">oak_runtime</span>::<span class="ident">SignatureTable</span>::<span class="ident">default</span>(),
+    )
 }
 
 <span class="doccomment">/// Build the configuration needed to launch a test Runtime instance that runs the given collection</span>
@@ -402,6 +442,7 @@
     <span class="ident">module_config_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">entrypoint_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">config_map</span>: <span class="ident">ConfigMap</span>,
+    <span class="ident">sign_table</span>: <span class="ident">oak_runtime</span>::<span class="ident">SignatureTable</span>,
 ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">oak_runtime</span>::<span class="ident">RuntimeConfiguration</span> {
     <span class="ident">oak_runtime</span>::<span class="ident">RuntimeConfiguration</span> {
         <span class="ident">metrics_port</span>: <span class="prelude-val">Some</span>(<span class="number">9090</span>),
@@ -412,10 +453,10 @@
                     <span class="macro">include_str</span><span class="macro">!</span>(<span class="string">&quot;../certs/local.pem&quot;</span>),
                     <span class="macro">include_str</span><span class="macro">!</span>(<span class="string">&quot;../certs/local.key&quot;</span>),
                 )),
-                <span class="ident">grpc_client_root_tls_certificate</span>: <span class="prelude-val">Some</span>(
-                    <span class="ident">oak_runtime</span>::<span class="ident">config</span>::<span class="ident">load_certificate</span>(<span class="kw-2">&amp;</span><span class="macro">include_str</span><span class="macro">!</span>(<span class="string">&quot;../certs/ca.pem&quot;</span>))
-                        .<span class="ident">unwrap</span>(),
-                ),
+                <span class="ident">grpc_client_root_tls_certificate</span>: <span class="ident">oak_runtime</span>::<span class="ident">tls</span>::<span class="ident">Certificate</span>::<span class="ident">parse</span>(
+                    <span class="macro">include_bytes</span><span class="macro">!</span>(<span class="string">&quot;../certs/ca.pem&quot;</span>).<span class="ident">to_vec</span>(),
+                )
+                .<span class="ident">ok</span>(),
                 <span class="ident">oidc_client_info</span>: <span class="prelude-val">None</span>,
             }),
             <span class="ident">http_config</span>: <span class="ident">create_http_config</span>(),
@@ -423,15 +464,15 @@
         <span class="ident">app_config</span>: <span class="ident">ApplicationConfiguration</span> {
             <span class="ident">wasm_modules</span>,
             <span class="ident">initial_node_configuration</span>: <span class="prelude-val">Some</span>(<span class="ident">NodeConfiguration</span> {
-                <span class="ident">name</span>: <span class="string">&quot;test&quot;</span>.<span class="ident">to_string</span>(),
                 <span class="ident">config_type</span>: <span class="prelude-val">Some</span>(<span class="ident">ConfigType</span>::<span class="ident">WasmConfig</span>(<span class="ident">WebAssemblyConfiguration</span> {
                     <span class="ident">wasm_module_name</span>: <span class="ident">module_config_name</span>.<span class="ident">to_string</span>(),
                     <span class="ident">wasm_entrypoint_name</span>: <span class="ident">entrypoint_name</span>.<span class="ident">to_string</span>(),
                 })),
             }),
+            <span class="ident">module_signatures</span>: <span class="macro">vec</span><span class="macro">!</span>[],
         },
         <span class="ident">config_map</span>,
-        <span class="ident">sign_table</span>: <span class="ident">oak_runtime</span>::<span class="ident">SignatureTable</span>::<span class="ident">default</span>(),
+        <span class="ident">sign_table</span>,
     }
 }
 
@@ -442,12 +483,18 @@
         <span class="string">&quot;../../../certs/local/local.pem&quot;</span>,
         <span class="string">&quot;../../../certs/local/local.key&quot;</span>,
     )<span class="question-mark">?</span>;
-    <span class="prelude-val">Some</span>(<span class="ident">oak_runtime</span>::<span class="ident">HttpConfiguration</span> { <span class="ident">tls_config</span> })
+    <span class="prelude-val">Some</span>(<span class="ident">oak_runtime</span>::<span class="ident">HttpConfiguration</span> {
+        <span class="ident">tls_config</span>,
+        <span class="ident">http_client_root_tls_certificate</span>: <span class="ident">oak_runtime</span>::<span class="ident">tls</span>::<span class="ident">Certificate</span>::<span class="ident">parse</span>(
+            <span class="macro">include_bytes</span><span class="macro">!</span>(<span class="string">&quot;../certs/ca.pem&quot;</span>).<span class="ident">to_vec</span>(),
+        )
+        .<span class="ident">ok</span>(),
+    })
 }
 
-<span class="doccomment">/// Build a channel and interceptor suitable for building a client that connects</span>
-<span class="doccomment">/// to a Runtime under test.</span>
-<span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">channel_and_interceptor</span>() <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">Channel</span>, <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">tonic</span>::<span class="ident">Interceptor</span><span class="op">&gt;</span>) {
+<span class="doccomment">/// Build a labeled channel and interceptor suitable for building a client that</span>
+<span class="doccomment">/// connects to a Runtime under test.</span>
+<span class="kw">pub</span> <span class="ident">async</span> <span class="kw">fn</span> <span class="ident">channel_and_interceptor</span>(<span class="ident">label</span>: <span class="kw-2">&amp;</span><span class="ident">Label</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">Channel</span>, <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">tonic</span>::<span class="ident">Interceptor</span><span class="op">&gt;</span>) {
     <span class="comment">// Build a channel that connects to the Runtime under test.</span>
     <span class="kw">let</span> <span class="ident">uri</span> <span class="op">=</span> <span class="ident">RUNTIME_URI</span>.<span class="ident">parse</span>().<span class="ident">expect</span>(<span class="string">&quot;Error parsing URI&quot;</span>);
     <span class="kw">let</span> <span class="ident">tls_config</span> <span class="op">=</span> <span class="ident">ClientTlsConfig</span>::<span class="ident">new</span>()
@@ -463,7 +510,7 @@
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">retries</span> <span class="op">=</span> <span class="number">0</span>;
     <span class="kw">let</span> <span class="ident">channel</span>;
     <span class="kw">loop</span> {
-        <span class="kw">match</span> <span class="ident">builder</span>.<span class="ident">connect</span>().<span class="kw">await</span> {
+        <span class="kw">match</span> <span class="ident">builder</span>.<span class="ident">connect</span>().<span class="ident">await</span> {
             <span class="prelude-val">Ok</span>(<span class="ident">c</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">debug</span><span class="macro">!</span>(<span class="string">&quot;Connected to gRPC server&quot;</span>);
                 <span class="ident">channel</span> <span class="op">=</span> <span class="ident">c</span>;
@@ -483,19 +530,25 @@
 
     <span class="comment">// Build an interceptor that will attach a public-untrusted Oak label to</span>
     <span class="comment">// every gRPC request.</span>
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">label</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">new</span>();
-    <span class="ident">Label</span>::<span class="ident">public_untrusted</span>()
-        .<span class="ident">encode</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">label</span>)
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">encoded_label</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">new</span>();
+    <span class="ident">label</span>
+        .<span class="ident">encode</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">encoded_label</span>)
         .<span class="ident">expect</span>(<span class="string">&quot;Error encoding label&quot;</span>);
     <span class="kw">let</span> <span class="ident">interceptor</span> <span class="op">=</span> <span class="kw">move</span> <span class="op">|</span><span class="kw-2">mut</span> <span class="ident">request</span>: <span class="ident">Request</span><span class="op">&lt;</span>()<span class="op">&gt;</span><span class="op">|</span> {
         <span class="ident">request</span>.<span class="ident">metadata_mut</span>().<span class="ident">insert_bin</span>(
             <span class="ident">oak_abi</span>::<span class="ident">OAK_LABEL_GRPC_METADATA_KEY</span>,
-            <span class="ident">MetadataValue</span>::<span class="ident">from_bytes</span>(<span class="ident">label</span>.<span class="ident">as_ref</span>()),
+            <span class="ident">MetadataValue</span>::<span class="ident">from_bytes</span>(<span class="ident">encoded_label</span>.<span class="ident">as_ref</span>()),
         );
         <span class="prelude-val">Ok</span>(<span class="ident">request</span>)
     };
 
     (<span class="ident">channel</span>, <span class="ident">interceptor</span>)
+}
+
+<span class="doccomment">/// Build a public-untrusted channel and interceptor suitable for building a</span>
+<span class="doccomment">/// client that connects to a Runtime under test.</span>
+<span class="kw">pub</span> <span class="ident">async</span> <span class="kw">fn</span> <span class="ident">public_channel_and_interceptor</span>() <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">Channel</span>, <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">tonic</span>::<span class="ident">Interceptor</span><span class="op">&gt;</span>) {
+    <span class="ident">channel_and_interceptor</span>(<span class="kw-2">&amp;</span><span class="ident">Label</span>::<span class="ident">public_untrusted</span>()).<span class="ident">await</span>
 }
 </pre></div>
 </section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "oak_tests";</script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>
